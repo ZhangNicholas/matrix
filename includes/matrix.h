@@ -1,3 +1,9 @@
+/**
+	\date Novemer 2020
+	\warning This work was done for educational purposes.
+*Fake endless matrix filled in with default values.
+*/
+
 #pragma once
 #include <unordered_map>
 #include <tuple>

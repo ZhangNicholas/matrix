@@ -4,7 +4,7 @@
 
 int main()
 {
-	const int default_value = -1;
+	const int default_value = 0;
 	const size_t matrix_size = 10;
 	PseudoMatrix<int, default_value> matrix;
 
