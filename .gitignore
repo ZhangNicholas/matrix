@@ -48,5 +48,6 @@
 CMakeSettings.json
 /build_debug
 /build
+/doxy_local
 /src/bad_ip_filter.tsv
 /src/small_ip_filter.tsv
