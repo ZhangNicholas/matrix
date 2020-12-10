@@ -1,26 +1,26 @@
 cmake_minimum_required(VERSION 3.5)
 
 if($ENV{TRAVIS_BUILD_NUMBER})
-	project(print_ip VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+	project(matrix VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else()
-	project(print_ip VERSION 0.0.1)
+	project(matrix VERSION 0.0.1)
 endif()
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCES src/main.cpp
+set(SOURCES main.cpp
 )
 
 # Main target
-add_executable(print_ip ${SOURCES})
+add_executable(matrix ${SOURCES})
 
-set_target_properties(print_ip PROPERTIES
-	CXX_STANDARD 17
+set_target_properties(matrix PROPERTIES
+	CXX_STANDARD 14
 	CXX_STANDARD_REQUIRED ON
 )
 
 target_include_directories(
-	print_ip
+	matrix
 	PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/includes"
 )
 
@@ -32,17 +32,17 @@ if (MSVC)
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 
 	target_compile_options(
-		print_ip PRIVATE
+		matrix PRIVATE
 		/WX
 	)
 else ()
 	target_compile_options(
-		print_ip PRIVATE
+		matrix PRIVATE
 		-Wall -Wextra -pedantic -Werror
 	)
 endif()
 
-install(TARGETS print_ip RUNTIME DESTINATION bin)
+install(TARGETS matrix RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 

@@ -1,42 +1,27 @@
 #include <iostream>
 
-//#include "includes/matrix.h"
-#include "includes/new_matrix.h"
-
-size_t pair_func(size_t a, size_t b) {
-	return ((a + b) * (a + b + 1))/2 + b;
-}
-
-Key depair_func(const size_t hash) {
-	size_t w = floor((sqrt(((double)hash * 8 + 1))-1)/2);
-	size_t t = (w * w + w) / 2;
-	size_t y = hash - t;
-	size_t x = w - y;
-	Key foo(x, y);
-	return foo;
-}
-
+#include "includes/matrix.h"
 
 int main()
 {
-	constexpr int default_value = -1;
-	constexpr size_t matrix_size = 10;
+	const int default_value = -1;
+	const size_t matrix_size = 10;
 	PseudoMatrix<int, default_value> matrix;
 
-	for (int i = 0; i < matrix_size; ++i)
+	for (size_t i = 0; i < matrix_size; ++i)
 	{
-		for (int j = 0; j < matrix_size; ++j)
+		for (size_t j = 0; j < matrix_size; ++j)
 		{
 			if (i == j)
-				matrix[i][j] = i;
+				matrix[i][j] = static_cast<int>(i);
 			if (i + j == matrix_size - 1)
-				matrix[i][j] = j;
+				matrix[i][j] = static_cast<int>(j);
 		}
 	}
 
-	for (int i = 1; i < matrix_size - 1; ++i)
+	for (size_t i = 1; i < matrix_size - 1; ++i)
 	{
-		for (int j = 1; j < matrix_size - 1; ++j)
+		for (size_t j = 1; j < matrix_size - 1; ++j)
 		{
 			std::cout << matrix[i][j] << " ";
 		}
@@ -47,8 +32,8 @@ int main()
 
 	for (auto const& c : matrix)
 	{
-		int x;
-		int y;
+		size_t x;
+		size_t y;
 		int v;
 		std::tie(x, y, v) = c;
 		std::cout << x << y << v << std::endl;
