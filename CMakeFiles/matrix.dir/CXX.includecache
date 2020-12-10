@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/travis/build/ZhangNicholas/matrix/includes/matrix.h
+unordered_map
+-
+tuple
+-
+
+/home/travis/build/ZhangNicholas/matrix/main.cpp
+iostream
+-
+includes/matrix.h
+/home/travis/build/ZhangNicholas/matrix/includes/matrix.h
+

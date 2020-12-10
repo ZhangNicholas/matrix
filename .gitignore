@@ -1,0 +1,52 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# temp tsvs
+*.tsv
+!ip_filter.tsv
+
+#Folders
+*/.vs/*
+*/out/*
+/.vs/*
+/out/*
+*/build_debug/*
+*/build/*
+
+# local settings
+*/CMakeSettings.json
+CMakeSettings.json
+/build_debug
+/build
+/src/bad_ip_filter.tsv
+/src/small_ip_filter.tsv

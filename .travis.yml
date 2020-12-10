@@ -1,0 +1,37 @@
+branches:
+ only:
+  - main
+language: cpp
+before_install:
+- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+- sudo apt-get -q update
+- sudo apt-get -y install g++-7
+- sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
+before_script:
+- echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
+- sudo apt-get update -qq
+addons:
+ apt:
+  packages:
+  - doxygen
+script:
+ - doxygen Doxyfile
+
+script:
+- cd $TRAVIS_BUILD_DIR
+- cmake .
+- cmake --build .
+- cmake --build . --target package
+deploy:
+- provider: script
+  skip_cleanup: true
+  script:
+   - curl -T matrix-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ucnickol:$BINTRAY_API_KEY "https://api.bintray.com/content/cnickol/otus/matrix/$TRAVIS_BUILD_NUMBER/matrix-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  on:
+   branch: main
+- provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+   branch: main
