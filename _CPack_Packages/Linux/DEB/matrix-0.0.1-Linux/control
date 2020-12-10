@@ -1,9 +1,0 @@
-Package: matrix
-Version: 0.0.1
-Section: devel
-Priority: optional
-Architecture: amd64
-Installed-Size: 69
-Maintainer: cnickol@gmail.com
-Description: matrix built using CMake
-
