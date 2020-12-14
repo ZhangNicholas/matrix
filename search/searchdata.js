@@ -3,8 +3,9 @@ var indexSectionsWithContent =
   0: "_bekmops",
   1: "kp",
   2: "m",
-  3: "bekos",
-  4: "_"
+  3: "bekmos",
+  4: "_",
+  5: "m"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables"
+  4: "variables",
+  5: "pages"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Files",
   3: "Functions",
-  4: "Variables"
+  4: "Variables",
+  5: "Pages"
 };
 
