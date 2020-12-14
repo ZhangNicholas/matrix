@@ -7,6 +7,7 @@ else()
 endif()
 
 set(CMAKE_CXX_STANDARD 14)
+find_package(GTest REQUIRED)
 
 set(SOURCES main.cpp
 )
@@ -14,7 +15,12 @@ set(SOURCES main.cpp
 # Main target
 add_executable(matrix ${SOURCES})
 
-set_target_properties(matrix PROPERTIES
+add_executable(
+	tests
+	test/tests.cpp
+)
+
+set_target_properties(matrix tests PROPERTIES
 	CXX_STANDARD 14
 	CXX_STANDARD_REQUIRED ON
 )
@@ -22,6 +28,18 @@ set_target_properties(matrix PROPERTIES
 target_include_directories(
 	matrix
 	PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/includes"
+)
+
+target_include_directories(
+	tests
+	PRIVATE ${GTEST_INCLUDE_DIRS}
+	PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src"
+	PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/includes"
+)
+
+target_link_libraries(
+	tests PRIVATE
+	${GTEST_BOTH_LIBRARIES}
 )
 
 if (MSVC)
@@ -35,9 +53,17 @@ if (MSVC)
 		matrix PRIVATE
 		/WX
 	)
+	target_compile_options(
+	tests PRIVATE
+	/WX
+	)
 else ()
 	target_compile_options(
 		matrix PRIVATE
+		-Wall -Wextra -pedantic -Werror
+	)
+	target_compile_options(
+		tests PRIVATE
 		-Wall -Wextra -pedantic -Werror
 	)
 endif()
@@ -53,3 +79,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT cnickol@gmail.com)
 
 include(CPack)
+
+enable_testing()
+
+add_test(tests tests) 

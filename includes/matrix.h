@@ -47,13 +47,21 @@ private:
 	public:
 		Cell(PseudoMatrix* matrix_, size_t i, size_t j) : _matrix(matrix_), i(i), j(j) {}
 
-		Cell& operator=(T value)
+		Cell& operator=(const T& value)
 		{
 			if (value != default_value)
 				_matrix->_map[Key(i, j)] = value;
 			else
 				_matrix->_map.erase(Key(i, j));
 			return *this;
+		}
+
+		bool operator==(const T& value) const
+		{
+			if (_matrix->_map[Key(i, j)] == value )
+				return true;
+			else
+				return false;
 		}
 
 		operator auto()
@@ -79,6 +87,11 @@ private:
 		{
 			return Cell(_matrix, i, j);
 		}
+
+		//T operator[](size_t j)
+		//{
+		//	return static_cast<T>(Cell(_matrix, i, j));
+		//}
 
 	private:
 		PseudoMatrix* _matrix;

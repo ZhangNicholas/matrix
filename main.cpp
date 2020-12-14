@@ -1,6 +1,7 @@
 #include <iostream>
 
-#include "includes/matrix.h"
+// #include "includes/matrix.h"
+#include "matrix.h"
 
 /*! \mainpage Matrix
  *
@@ -16,16 +17,17 @@ int main()
 {
 	const int default_value = 0;
 	const size_t matrix_size = 10;
-	PseudoMatrix<int, default_value> matrix;
+	using MatrixType = int;
+	PseudoMatrix<MatrixType, default_value> matrix;
 
 	for (size_t i = 0; i < matrix_size; ++i)
 	{
 		for (size_t j = 0; j < matrix_size; ++j)
 		{
 			if (i == j)
-				matrix[i][j] = static_cast<int>(i);
+				matrix[i][j] = static_cast<MatrixType>(i);
 			if (i + j == matrix_size - 1)
-				matrix[i][j] = static_cast<int>(j);
+				matrix[i][j] = static_cast<MatrixType>(j);
 		}
 	}
 
@@ -52,6 +54,5 @@ int main()
 	std::cout << matrix[100][100] << std::endl;
 	((matrix[100][100] = 314) = 0) = 217;
 	std::cout << matrix[100][100] << std::endl;
-
 	return 0;
 }
