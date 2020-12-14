@@ -2,6 +2,16 @@
 
 #include "includes/matrix.h"
 
+/*! \mainpage Matrix
+ *
+ * Otus C++ Developer course
+ * 
+ * Homework #5
+ * 
+ * Task: design endless 2-d matrix filled with default values.
+ * Matrix must support [][] subscript operator, size() method and iterator.
+ */
+
 int main()
 {
 	const int default_value = 0;
