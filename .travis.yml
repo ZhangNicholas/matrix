@@ -7,6 +7,18 @@ before_install:
 - sudo apt-get -q update
 - sudo apt-get -y install g++-7
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
+- sudo apt-get install -y libgtest-dev cmake
+- cd /usr/src/gtest
+- sudo mkdir build
+- cd build
+- sudo cmake -DBUILD_SHARED_LIBS=ON ..
+- sudo make
+- sudo cp libgtest* /usr/lib/
+- cd ..
+- sudo rm -rf build
+- sudo mkdir /usr/local/lib/googletest
+- sudo ln -s /usr/lib/libgtest.a /usr/local/lib/googletest/libgtest.a
+- sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/googletest/libgtest_main.a
 before_script:
 - echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
 - sudo apt-get update -qq
