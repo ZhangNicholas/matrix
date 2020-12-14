@@ -1,12 +1,10 @@
-/**
-	\date Novemer 2020
-	\warning This work was done for educational purposes.
-*Fake endless matrix filled in with default values.
-*/
-
 #pragma once
 #include <unordered_map>
 #include <tuple>
+
+/**
+*	Helper struct to index matrix elements
+*/
 
 struct Key
 {
@@ -19,6 +17,11 @@ struct Key
 	}
 };
 
+/**
+* Hashes Key struct using [Cantor pairing function]
+* (https://en.wikipedia.org/?title=Cantor_pairing_function&redirect=no).
+*/
+
 template <typename Key>
 class PairingFunction
 {
@@ -28,6 +31,11 @@ public:
 		return ((p._first + p._last) * (p._first + p._last + 1))/2 + p._last;
 	}
 };
+
+
+/**
+* Hashmap emulating endless 2-d matrix using hashed Key
+*/
 
 template <typename T, T default_value>
 class PseudoMatrix
