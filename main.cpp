@@ -1,6 +1,7 @@
 #include <iostream>
 
-#include "includes/matrix.h"
+// #include "includes/matrix.h"
+#include "matrix.h"
 
 /*! \mainpage Matrix
  *
