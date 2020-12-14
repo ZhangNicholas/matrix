@@ -54,7 +54,5 @@ int main()
 	std::cout << matrix[100][100] << std::endl;
 	((matrix[100][100] = 314) = 0) = 217;
 	std::cout << matrix[100][100] << std::endl;
-	std::cout << (matrix[100][100] == 217) << std::endl;
-
 	return 0;
 }
